@@ -57,7 +57,3 @@ workflows:
     jobs:
       - build_preview:
           context: expo-credentials
-          filters:
-            branches:
-              only:
-                - main
