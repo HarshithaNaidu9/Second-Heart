@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.maheshb.frontend",
+      "bundleIdentifier": "com.harshitha9.frontend",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSAppTransportSecurity": {
@@ -28,7 +28,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.maheshb.frontend"
+      "package": "com.harshitha9.frontend"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -51,9 +51,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "9de5074b-b3a4-4979-a8c3-1fe448634721"
+        "projectId": "559015c1-107e-47dd-9f81-843278896f31"
       }
     },
-    "owner": "mahesh-b"
+    "owner": "harshitha_9"
   }
 }
