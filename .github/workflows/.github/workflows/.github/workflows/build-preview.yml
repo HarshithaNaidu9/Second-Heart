@@ -1,0 +1,50 @@
+name: Expo Preview Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_preview:
+    runs-on: ubuntu-latest
+
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify Environment Variables
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "ERROR: EXPO_TOKEN is not set in GitHub Secrets."
+            exit 1
+          fi
+          echo "All required environment variables are configured."
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: v1-deps-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            v1-deps-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Verify EAS Authentication
+        run: eas whoami
+
+      - name: Build Preview (Android)
+        run: eas build --profile preview --platform android --non-interactive
